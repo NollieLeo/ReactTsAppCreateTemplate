@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "module": "commonjs",
+    "target": "ES5",
+    "sourceMap": true,
+    "importHelpers": true,
+    "allowJs": true,
+    // "checkJs": true,
+    "esModuleInterop": true, // 不加上的话 import 会有问题
+    "removeComments": true,
+    "strict": true,
+  },
+  "exclude": ["node_modules"],
+  // "include": ["src"
+}
