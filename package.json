@@ -12,10 +12,8 @@
     "lint-fix": "eslint **/*/*.{js,jsx,ts,tsx}  --fix && stylelint src/**/*.{less,css,sass} --fix",
     "precommit": "npm run lint"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint"
-    }
+  "hooks": {
+    "pre-commit": "npm run lint"
   },
   "author": "Mr.Weng <736653759@qq.com>",
   "devDependencies": {
