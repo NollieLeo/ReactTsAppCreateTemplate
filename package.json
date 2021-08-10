@@ -13,6 +13,11 @@
     "precommit": "npm run lint",
     "prepush": "lint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
   "author": "Mr.Weng <736653759@qq.com>",
   "devDependencies": {
     "@babel/core": "^7.15.0",
