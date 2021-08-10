@@ -9,6 +9,7 @@ react+typescript快速构建web app的模板
 - [x] webpack5
 - [x] less
 - [x] postcss
+- [x] stylelint
 - [ ] conventional-changelog
 - [ ] commitlint
 - [ ] husky

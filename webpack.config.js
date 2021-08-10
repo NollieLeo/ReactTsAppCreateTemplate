@@ -25,13 +25,7 @@ const getWebpackConfig = (env, args) => {
           test: /\.(js|jsx|ts|tsx)$/,
           use: ["babel-loader"],
           exclude: /node_modules/,
-          // include: /src/,
-        },
-        {
-          test: /\.(ts|tsx)$/,
-          use: ["ts-loader"],
-          exclude: /node_modules/,
-          // include: /src/,
+          include: /src/,
         },
         {
           test: /\.css$/,
