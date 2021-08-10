@@ -1,5 +1,5 @@
 {
-  "name": "wepack-demo",
+  "name": "@weng/app-react-template",
   "version": "1.0.0",
   "description": "测试webpack",
   "main": "index.js",
@@ -9,9 +9,7 @@
     "start": "webpack serve",
     "build": "webpack --config webpack.config.js",
     "lint": "eslint src/**/*.{js,jsx,ts,tsx}",
-    "lint-fix": "eslint **/*/*.{js,jsx,ts,tsx}  --fix",
-    "precommit": "npm run lint",
-    "prepush": "lint"
+    "lint-fix": "eslint **/*/*.{js,jsx,ts,tsx}  --fix"
   },
   "husky": {
     "hooks": {

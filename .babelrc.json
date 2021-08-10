@@ -3,11 +3,10 @@
   "presets": [
     ["@babel/preset-env"],
     [
-      "@babel/preset-react"
-      // {
-      //   "runtime": "automatic"
-      //   // 这一行可以在rect hook 版本里不引入import React from 'react'
-      // }
+      "@babel/preset-react",
+      {
+        "runtime": "automatic"
+      }
     ]
   ]
 }

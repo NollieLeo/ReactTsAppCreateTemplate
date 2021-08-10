@@ -1,29 +1,29 @@
 // @ts-nocheck
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
 
 const getWebpackConfig = (env, args) => {
-  const mode = args.mode;
-  const isDev = mode === "development";
-  const isProduction = mode === "production";
+  const { mode } = args;
+  const isDev = mode === 'development';
+  const isProduction = mode === 'production';
   return {
     // js的执行入口文件
     mode: mode || 'production',
-    entry: "./src/index.tsx",
+    entry: './src/index.tsx',
     output: {
-      filename: "[name].[contenthash:8].js",
-      path: path.resolve(__dirname, "./dist"),
+      filename: '[name].[contenthash:8].js',
+      path: path.resolve(__dirname, './dist'),
     },
     resolve: {
-      extensions: [".ts", ".tsx", ".js", ".jsx"],
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx|ts|tsx)$/,
-          use: ["babel-loader"],
+          use: ['babel-loader'],
           exclude: /node_modules/,
           include: /src/,
         },
@@ -38,10 +38,10 @@ const getWebpackConfig = (env, args) => {
             //   loader: "style-loader",
             // },
             {
-              loader: "css-loader",
+              loader: 'css-loader',
             },
             {
-              loader: "postcss-loader",
+              loader: 'postcss-loader',
             },
           ],
         },
@@ -52,17 +52,17 @@ const getWebpackConfig = (env, args) => {
             'css-loader',
             'postcss-loader',
             'less-loader',
-          ]
-        }
+          ],
+        },
       ],
     },
     plugins: [
       new MiniCssExtractPlugin({
-        filename: "[name]_[contenthash:8].css",
+        filename: '[name]_[contenthash:8].css',
         // chunkFilename: "[id].css",
       }),
       new HtmlWebpackPlugin({
-        template: "./public/index.html",
+        template: './public/index.html',
       }),
       new EslintPlugin(),
       // new BundleAnalyzer(),
@@ -81,7 +81,7 @@ const getWebpackConfig = (env, args) => {
       // host: '0.0.0.0',
       // contentBase: path.join(__dirname, 'public'),
     },
-    devtool: "source-map",
+    devtool: 'source-map',
   };
 };
 module.exports = getWebpackConfig;
