@@ -13,9 +13,7 @@
     "jslint": "eslint src/**/*.{js,jsx,ts,tsx}",
     "csslint": "stylelint src/**/*.{less,css,sass}",
     "lint": "npm run jslint && npm run csslint",
-    "lint-fix": "npm run jslint --fix && npm run csslint --fix",
-    "lint-staged": "lint-staged",
-    "lint-staged:es": "npm run lint"
+    "lint-fix": "npm run jslint --fix && npm run csslint --fix"
   },
   "author": "Mr.Weng <736653759@qq.com>",
   "devDependencies": {
