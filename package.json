@@ -17,15 +17,6 @@
     "lint-staged": "lint-staged",
     "lint-staged:es": "npm run lint"
   },
-  "lint-staged": {
-    "src/**/.{js,jsx,ts,tsx}": [
-      "npm run jslint",
-      "npm run stylelint"
-    ],
-    "src/**/*.{less,css,sass}": [
-      "stylelint"
-    ]
-  },
   "author": "Mr.Weng <736653759@qq.com>",
   "devDependencies": {
     "@babel/core": "^7.15.0",

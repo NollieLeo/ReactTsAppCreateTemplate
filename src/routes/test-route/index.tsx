@@ -6,6 +6,8 @@ const TestRoute = () => {
 
   }, []);
 
+  var a = 1;
+
   return (
     <div>
       hello world
