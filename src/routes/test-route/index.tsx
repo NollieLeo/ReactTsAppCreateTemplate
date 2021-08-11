@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import JohnWick from '../../assets/img/John-Wick.jpg';
 
 const TestRoute = () => {
   useEffect(() => {
@@ -8,6 +9,7 @@ const TestRoute = () => {
   return (
     <div>
       hello world
+      <img src={JohnWick} alt="img" />
     </div>
   );
 };

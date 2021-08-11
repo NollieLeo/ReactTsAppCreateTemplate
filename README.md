@@ -8,11 +8,13 @@ react+typescript快速构建web app的模板
 - [x] eslint
 - [x] webpack5
 - [x] less
+- [ ] file-loader
 - [x] postcss
 - [x] stylelint
 - [ ] conventional-changelog
 - [ ] commitlint
-- [ ] husky
+- [x] husky
+- [x] lint-staged
 - [ ] jest
 - [ ] mock
 - [ ] locale

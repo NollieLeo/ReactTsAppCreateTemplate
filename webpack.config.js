@@ -22,13 +22,13 @@ const getWebpackConfig = (env, args) => {
     module: {
       rules: [
         {
-          test: /\.(js|jsx|ts|tsx)$/,
+          test: /\.(js|jsx|ts|tsx)$/i,
           use: ['babel-loader'],
           exclude: /node_modules/,
           include: /src/,
         },
         {
-          test: /\.css$/,
+          test: /\.css$/i,
           include: /src/,
           use: [
             {
@@ -46,13 +46,22 @@ const getWebpackConfig = (env, args) => {
           ],
         },
         {
-          test: /\.less$/,
+          test: /\.less$/i,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
             'postcss-loader',
             'less-loader',
           ],
+        },
+        {
+          test: /\.(svg|jpg|png|gif)$/i,
+          type: 'asset',
+          parser: {
+            dataUrlCondition: {
+              maxSize: 100 * 1024, // 100kb 以下用inline形式转base64，否者直接source
+            },
+          },
         },
       ],
     },
@@ -68,7 +77,7 @@ const getWebpackConfig = (env, args) => {
       // new BundleAnalyzer(),
     ],
     devServer: {
-      // contentBase: path.join(__dirname, 'dist'),
+      contentBase: path.join(__dirname, 'dist'),
       compress: true, // 开启Gzip压缩
       port: 9000,
       hot: true,
