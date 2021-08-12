@@ -13,7 +13,7 @@ react+typescript快速构建web app的模板
 - [x] postcss
 - [x] stylelint
 - [ ] conventional-changelog
-- [ ] commitlint
+- [x] commitlint
 - [x] husky
 - [x] lint-staged
 - [ ] jest
