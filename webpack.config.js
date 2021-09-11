@@ -3,6 +3,8 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
+const SvgToMiniDataURI = require('mini-svg-data-uri');
+const Webpackbar = require('webpackbar');
 
 const getWebpackConfig = (env, args) => {
   const { mode } = args;
@@ -18,6 +20,9 @@ const getWebpackConfig = (env, args) => {
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
     },
     module: {
       rules: [
@@ -47,6 +52,7 @@ const getWebpackConfig = (env, args) => {
         },
         {
           test: /\.less$/i,
+          include: /src/,
           use: [
             MiniCssExtractPlugin.loader,
             'css-loader',
@@ -55,8 +61,21 @@ const getWebpackConfig = (env, args) => {
           ],
         },
         {
-          test: /\.(svg|jpg|png|gif)$/i,
+          test: /\.(jpg|png|gif)$/i,
+          type: 'asset', // 这里不确定使用inline还是用source方式去转换所以需按下面得配置
+          parser: {
+            dataUrlCondition: {
+              maxSize: 100 * 1024, // 100kb 以下用inline形式转base64，否者直接source
+            },
+          },
+        },
+        {
+          test: /\.svg$/i,
           type: 'asset',
+          generator: {
+            // 默认是呈现为使用 Base64 算法编码的文件内容
+            dataUrl: (content) => SvgToMiniDataURI(content.toString()), // 自定义URL的转换规则，对于匹配到
+          },
           parser: {
             dataUrlCondition: {
               maxSize: 100 * 1024, // 100kb 以下用inline形式转base64，否者直接source
@@ -66,6 +85,7 @@ const getWebpackConfig = (env, args) => {
       ],
     },
     plugins: [
+      new Webpackbar(),
       new MiniCssExtractPlugin({
         filename: '[name]_[contenthash:8].css',
         // chunkFilename: "[id].css",

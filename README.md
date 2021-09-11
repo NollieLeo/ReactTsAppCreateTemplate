@@ -16,6 +16,7 @@ react+typescript快速构建web app的模板
 - [x] commitlint
 - [x] husky
 - [x] lint-staged
+- [x] webpackbar 打包进度条
 - [ ] jest
 - [ ] mock
 - [ ] locale
