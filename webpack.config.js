@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
 const SvgToMiniDataURI = require('mini-svg-data-uri');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Webpackbar = require('webpackbar');
 
 const getWebpackConfig = (env, args) => {
@@ -23,17 +24,20 @@ const getWebpackConfig = (env, args) => {
       alias: {
         '@': path.resolve(__dirname, './src'),
       },
+      modules: [
+        path.resolve(__dirname, 'node_modules'),
+      ],
     },
     module: {
       rules: [
         {
           test: /\.(js|jsx|ts|tsx)$/i,
-          use: ['babel-loader'],
+          use: ['babel-loader?cacheDirectory'],
           exclude: /node_modules/,
           include: /src/,
         },
         {
-          test: /\.css$/i,
+          test: /\.css$/,
           include: /src/,
           use: [
             {
@@ -51,7 +55,7 @@ const getWebpackConfig = (env, args) => {
           ],
         },
         {
-          test: /\.less$/i,
+          test: /\.less$/,
           include: /src/,
           use: [
             MiniCssExtractPlugin.loader,
@@ -91,9 +95,10 @@ const getWebpackConfig = (env, args) => {
         // chunkFilename: "[id].css",
       }),
       new HtmlWebpackPlugin({
-        template: './public/index.html',
+        template: path.join(__dirname, 'public/index.html'),
       }),
       new EslintPlugin(),
+      new CleanWebpackPlugin(),
       // new BundleAnalyzer(),
     ],
     devServer: {
@@ -102,6 +107,7 @@ const getWebpackConfig = (env, args) => {
       port: 9000,
       hot: true,
       open: true,
+      stats: 'errors-only', // 终端仅仅打印error
       // noInfo: true,
       // overlay: false,
       overlay: {
@@ -110,7 +116,7 @@ const getWebpackConfig = (env, args) => {
       // host: '0.0.0.0',
       // contentBase: path.join(__dirname, 'public'),
     },
-    devtool: 'source-map',
+    devtool: isDev ? 'eval-cheap-module-source-map' : isProduction && 'hidden-source-map',
   };
 };
 module.exports = getWebpackConfig;

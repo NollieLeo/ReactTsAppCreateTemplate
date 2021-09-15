@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
-import JohnWick from '../../assets/img/John-Wick.jpg';
-import MainPageSvg from '../../assets/img/MainPage.svg';
+import JohnWick from '@/assets/img/John-Wick.jpg';
+import MainPageSvg from '@/assets/img/MainPage.svg';
+import './index.less';
 
 const prefixCls = 'test-img';
 
