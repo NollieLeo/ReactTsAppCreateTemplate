@@ -1,17 +1,21 @@
 import { useEffect, lazy, Suspense } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
+import { forEach } from 'lodash';
 
 const TestRoute = lazy(() => import('./test-route'));
 const TestImg = lazy(() => import('./test-imgPack'));
 
 const RouteIndex = () => {
   useEffect(() => {
-    console.log('rest');
+    forEach(new Array(3).fill(0), () => {
+      console.log('rest');
+    });
   }, []);
 
   return (
     <Router>
-      <h1>test React</h1>
+      <h1>test Webpack 5 by weng</h1>
+      <p>this is a demo s s</p>
       <Suspense fallback={<span />}>
         <Route component={TestRoute} path="/test-route" />
         <Route component={TestImg} path="/test-img" />

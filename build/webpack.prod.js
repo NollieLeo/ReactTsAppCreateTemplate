@@ -5,7 +5,6 @@ const baseConfig = require('./webpack.base');
 
 module.exports = mergeWebpackConfig(baseConfig, {
   mode: 'production',
-  devtool: 'hidden-source-map',
   plugins: [
     new Webpackbar(), // 开发才有
   ],
@@ -20,4 +19,5 @@ module.exports = mergeWebpackConfig(baseConfig, {
       config: [__filename],
     },
   },
+  devtool: 'hidden-source-map',
 });

@@ -84,6 +84,7 @@ module.exports = {
         },
       },
     ],
+    noParse: (content) => /jquery|lodash/.test(content), // 忽略
   },
 
   plugins: [
