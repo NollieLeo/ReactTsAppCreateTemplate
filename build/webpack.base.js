@@ -14,6 +14,10 @@ module.exports = {
     path: path.resolve(rootDir, 'dist'),
     clean: true,
   },
+  optimization: {
+    usedExports: true, // 只导出被使用的模块
+    minimize: true, // 启动压缩
+  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
@@ -39,7 +43,7 @@ module.exports = {
             loader: MiniCssExtractPlugin.loader,
           },
           // {
-          //   loader: "style-loader",
+          //   loader: 'style-loader',
           // },
           {
             loader: 'css-loader',
@@ -66,7 +70,7 @@ module.exports = {
         type: 'asset', // 这里不确定使用inline还是用source方式去转换所以需按下面得配置
         parser: {
           dataUrlCondition: {
-            maxSize: 100 * 1024, // 100kb 以下用inline形式转base64，否者直接source
+            maxSize: 10 * 1024, // 10kb 以下用inline形式转base64，否者直接resource
           },
         },
       },

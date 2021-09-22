@@ -6,7 +6,7 @@ const baseConfig = require('./webpack.base');
 module.exports = mergeWebpackConfig(baseConfig, {
   mode: 'production',
   plugins: [
-    new Webpackbar(), // 开发才有
+    new Webpackbar(),
   ],
   optimization: {
     splitChunks: {
