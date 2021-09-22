@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const { merge: mergeWebpackConfig } = require('webpack-merge');
 const Webpackbar = require('webpackbar');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
 const baseConfig = require('./webpack.base');
@@ -12,6 +13,7 @@ module.exports = mergeWebpackConfig(baseConfig, {
   plugins: [
     new Webpackbar(), // 本地开发才有
     new webpack.HotModuleReplacementPlugin({}), // 热模块替换
+    new ReactRefreshWebpackPlugin(),
   ],
   cache: {
     type: 'memory', // dev环境开启memory类型缓存

@@ -68,6 +68,7 @@ module.exports = {
       {
         test: /\.(jpg|png|gif)$/i,
         type: 'asset', // 这里不确定使用inline还是用source方式去转换所以需按下面得配置
+        include: /src/,
         parser: {
           dataUrlCondition: {
             maxSize: 10 * 1024, // 10kb 以下用inline形式转base64，否者直接resource
@@ -75,7 +76,13 @@ module.exports = {
         },
       },
       {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+        include: /src/,
+      },
+      {
         test: /\.svg$/i,
+        include: /src/,
         type: 'asset',
         generator: {
           // 默认是呈现为使用 Base64 算法编码的文件内容

@@ -12,6 +12,7 @@ react+typescript快速构建web app的模板
 - [ ] url-loader 这玩意也不需要了，webpack也自带了
 - [x] postcss
 - [x] stylelint
+- [ ] react组件热更新
 - [ ] conventional-changelog
 - [x] commitlint
 - [x] husky
