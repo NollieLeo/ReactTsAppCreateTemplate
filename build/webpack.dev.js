@@ -13,7 +13,7 @@ module.exports = mergeWebpackConfig(baseConfig, {
   plugins: [
     new Webpackbar(), // 本地开发才有
     new webpack.HotModuleReplacementPlugin({}), // 热模块替换
-    new ReactRefreshWebpackPlugin(),
+    new ReactRefreshWebpackPlugin(), // React的组件热更新
   ],
   cache: {
     type: 'memory', // dev环境开启memory类型缓存

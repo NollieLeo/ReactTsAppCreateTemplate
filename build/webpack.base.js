@@ -25,6 +25,7 @@ module.exports = {
     },
     modules: [
       path.resolve(rootDir, 'node_modules'),
+      path.resolve(rootDir, 'src'),
     ],
   },
   module: {
@@ -39,12 +40,12 @@ module.exports = {
         test: /\.css$/,
         include: /src/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
           // {
           //   loader: 'style-loader',
           // },
+          {
+            loader: MiniCssExtractPlugin.loader,
+          },
           {
             loader: 'css-loader',
           },
