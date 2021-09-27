@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-import JohnWick from '@/assets/img/John-Wick.jpg';
 import MainPageSvg from '@/assets/img/MainPage.svg';
 import './index.less';
+import '../../main.less';
 
 const prefixCls = 'test-img';
 
@@ -14,7 +14,6 @@ const TestImgRoute = () => {
       <p>
         test img
       </p>
-      <img src={JohnWick} alt="img" />
       <img src={MainPageSvg} alt="img" />
     </div>
   );

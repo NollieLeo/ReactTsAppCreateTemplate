@@ -1,22 +1,19 @@
 /* eslint-disable import/no-extraneous-dependencies */
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const EslintPlugin = require('eslint-webpack-plugin');
 const SvgToMiniDataURI = require('mini-svg-data-uri');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const Webpackbar = require('webpackbar');
 
 const rootDir = process.cwd();
 
 module.exports = {
   entry: path.resolve(rootDir, 'src/index.tsx'),
   output: {
-    filename: '[name].[contenthash:8].js',
     path: path.resolve(rootDir, 'dist'),
     clean: true,
-  },
-  optimization: {
-    usedExports: true, // 只导出被使用的模块
-    minimize: true, // 启动压缩
+    pathinfo: false, // 不再生成的bundle中生成路径信息，加快速度
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
@@ -35,36 +32,6 @@ module.exports = {
         use: ['babel-loader?cacheDirectory'],
         exclude: /node_modules/,
         include: /src/,
-      },
-      {
-        test: /\.css$/,
-        include: /src/,
-        use: [
-          // {
-          //   loader: 'style-loader',
-          // },
-          {
-            loader: MiniCssExtractPlugin.loader,
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'postcss-loader',
-          },
-        ],
-      },
-      {
-        test: /\.less$/,
-        include: /src/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-          },
-          'postcss-loader',
-          'less-loader',
-        ],
       },
       {
         test: /\.(jpg|png|gif)$/i,
@@ -96,18 +63,21 @@ module.exports = {
         },
       },
     ],
-    noParse: (content) => /jquery|lodash/.test(content), // 忽略
+    noParse: (content) => /jquery/.test(content), // 忽略
   },
 
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name]_[contenthash:8].css',
-      // chunkFilename: "[id].css",
-    }),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'disabled',
+    //   generateStatsFile: true,
+    //   statsOptions: {
+    //     source: false,
+    //   },
+    // }),
     new HtmlWebpackPlugin({
       template: path.join(rootDir, 'public/index.html'),
     }),
     new EslintPlugin(),
-    // new BundleAnalyzer(),
+    new Webpackbar(),
   ],
 };

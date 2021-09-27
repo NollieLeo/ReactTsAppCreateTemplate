@@ -78,6 +78,10 @@ module.exports = {
             ignoreRestSiblings: true,
           },
         ],
+        'import/no-extraneous-dependencies': [
+          'error',
+          { devDependencies: true },
+        ],
       },
     },
   ],

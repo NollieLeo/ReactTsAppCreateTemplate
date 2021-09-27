@@ -1,17 +1,25 @@
 /* eslint-disable import/no-extraneous-dependencies */
+
 const { merge: mergeWebpackConfig } = require('webpack-merge');
-const Webpackbar = require('webpackbar');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const webpack = require('webpack');
 const path = require('path');
+const getStyleLoader = require('./utils/getStylesLoader');
 const baseConfig = require('./webpack.base');
 
 const rootDir = process.cwd();
 
 module.exports = mergeWebpackConfig(baseConfig, {
   mode: 'development',
+  output: {
+    filename: '[name].bundle.js', // 开发没必要用hash，直接name就OK，hash是为了缓存的，prod才有效果
+  },
+  module: {
+    rules: [
+      ...getStyleLoader('development'),
+    ],
+  },
   plugins: [
-    new Webpackbar(), // 本地开发才有
     new webpack.HotModuleReplacementPlugin({}), // 热模块替换
     new ReactRefreshWebpackPlugin(), // React的组件热更新
   ],
