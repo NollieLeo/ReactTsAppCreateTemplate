@@ -23,9 +23,6 @@ module.exports = mergeWebpackConfig(baseConfig, {
     new webpack.HotModuleReplacementPlugin({}), // 热模块替换
     new ReactRefreshWebpackPlugin(), // React的组件热更新
   ],
-  cache: {
-    type: 'memory', // dev环境开启memory类型缓存
-  },
   // watch: true,
   watchOptions: {
     ignored: /node_modules/,
@@ -35,16 +32,23 @@ module.exports = mergeWebpackConfig(baseConfig, {
     poll: 1000,
   },
   devServer: {
+    // client: {
+    //   // progress: true,
+    // },
     contentBase: path.join(rootDir, 'dist'),
     compress: true, // 开启Gzip压缩
     port: 9099,
+    host: '127.0.0.1',
     hot: true,
     open: true,
+    progress: true,
     stats: 'errors-only', // 终端仅仅打印error
+    // historyApiFallback: true,
     // noInfo: true,
     // overlay: false,
     overlay: {
-      error: true,
+      errors: true,
+      warnings: false,
     },
     // host: '0.0.0.0',
     // contentBase: path.join(rootDir, 'public'),

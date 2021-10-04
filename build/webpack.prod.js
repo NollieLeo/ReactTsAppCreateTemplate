@@ -43,6 +43,7 @@ module.exports = mergeWebpackConfig(baseConfig, {
         },
       },
     },
+    moduleIds: 'deterministic', // 公共包 splitChunks 的 hash 不因为新的依赖而改变，减少非必要的 hash 变动
     sideEffects: true, // 开启tree shaking，package里头要配置成false或者不配置，或者数组，具体查一下
     runtimeChunk: true,
     usedExports: true,
@@ -53,14 +54,14 @@ module.exports = mergeWebpackConfig(baseConfig, {
       }),
       new TeserWebpackPlugin({
         parallel: 4,
+        extractComments: false,
+        terserOptions: {
+          compress: {
+            pure_funcs: ['console.log'],
+          },
+        },
       }),
     ],
-  },
-  cache: { // 生成环境使用filesystem模式
-    type: 'filesystem',
-    buildDependencies: {
-      config: [__filename],
-    },
   },
   devtool: undefined, // 'hidden-source-map'
 });

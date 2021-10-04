@@ -2,6 +2,7 @@
   "name": "@weng/app-react-template",
   "version": "1.0.0",
   "description": "测试webpack",
+  "sideEffects":["*.css","*.less"],
   "main": "index.js",
   "license": "MIT",
   "private": true,

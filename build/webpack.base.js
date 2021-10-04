@@ -25,6 +25,12 @@ module.exports = {
       path.resolve(rootDir, 'src'),
     ],
   },
+  cache: { // 缓存filesystem模式
+    type: 'filesystem',
+    buildDependencies: {
+      config: [__filename],
+    },
+  },
   module: {
     rules: [
       {
@@ -76,6 +82,13 @@ module.exports = {
     // }),
     new HtmlWebpackPlugin({
       template: path.join(rootDir, 'public/index.html'),
+      title: 'weng的webpack模板',
+      hash: true,
+      minify: {
+        removeAttributeQuotes: true, // 去除多余引号
+        collapseWhitespace: true, // 移除空格
+        removeComments: true, // 移除注释
+      },
     }),
     new EslintPlugin(),
     new Webpackbar(),
