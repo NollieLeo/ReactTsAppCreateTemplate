@@ -2,7 +2,10 @@
   "name": "@weng/app-react-template",
   "version": "1.0.0",
   "description": "测试webpack",
-  "sideEffects":["*.css","*.less"],
+  "sideEffects": [
+    "*.css",
+    "*.less"
+  ],
   "main": "index.js",
   "license": "MIT",
   "private": true,
@@ -18,7 +21,8 @@
     "csslint": "stylelint src/**/*.{less,css,sass}",
     "lint": "npm run jslint && npm run csslint",
     "lint-fix": "npm run jslint --fix && npm run csslint --fix",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "debug": "webpack --config build/webpack.dev.js"
   },
   "author": "Mr.Weng <736653759@qq.com>",
   "devDependencies": {

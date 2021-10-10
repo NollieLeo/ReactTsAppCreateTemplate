@@ -31,8 +31,19 @@ module.exports = {
       config: [__filename],
     },
   },
+  resolveLoader: {
+    modules: [
+      path.resolve(rootDir, 'node_modules'),
+      path.resolve(rootDir, 'build/loaders'),
+    ],
+  },
   module: {
     rules: [
+      {
+        test: /\.txt$/i,
+        include: /test/,
+        use: ['loader-a', 'loader-b', 'loader-c'],
+      },
       {
         test: /\.(js|jsx|ts|tsx)$/i,
         use: ['babel-loader?cacheDirectory'],

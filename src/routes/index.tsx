@@ -2,6 +2,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import forEach from 'lodash/forEach';
 import TestAntd, { helloworlkd } from './test-antd';
+import testweng from '../../test/test.txt';
 
 const TestRoute = lazy(() => import('./test-route'));
 const TestImg = lazy(() => import('./test-imgPack'));
@@ -17,6 +18,7 @@ const RouteIndex = () => {
     <Router>
       <h1>test Webpack 5 by weng</h1>
       <p>this is a demo s s</p>
+      <span>{testweng}</span>
       <TestAntd />
       <Suspense fallback={<span />}>
         <Route component={TestRoute} path="/test-route" />
